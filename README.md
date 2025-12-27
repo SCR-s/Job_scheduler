@@ -4,28 +4,28 @@ A scalable job scheduler system capable of executing thousands of scheduled jobs
 
 ## Features
 
-- ✅ Create, modify, and delete jobs
-- ✅ View job execution history
-- ✅ Alert on job failures
-- ✅ High-throughput execution (thousands of jobs/second)
-- ✅ Extended CRON scheduling with seconds support
-- ✅ At-least-once execution semantics
-- ✅ Comprehensive observability and metrics
-- ✅ Modern React frontend with Vite
-- ✅ PostgreSQL persistence
+- Create, modify, and delete jobs
+- View job execution history
+- Alert on job failures
+- High-throughput execution (thousands of jobs/second)
+- Extended CRON scheduling with seconds support
+- At-least-once execution semantics
+- Comprehensive observability and metrics
+- Modern React frontend with Vite
+- PostgreSQL persistence
 
 ## Tech Stack
 
-### Backend
-- **Node.js** + **Express.js** - REST API server
-- **PostgreSQL** - Data persistence
-- **Winston** - Logging
+Backend
+- Node.js + Express.js- REST API server
+- PostgreSQL - Data persistence
+- Winston - Logging
 - Custom high-precision scheduler
 
 ### Frontend
-- **React** - UI framework
-- **Vite** - Build tool
-- **Axios** - HTTP client
+- React- UI framework
+- Vite - Build tool
+- Axios - HTTP client
 
 ## Project Structure
 
@@ -54,6 +54,7 @@ Job_scheduler/
 │   │   └── App.jsx          # Main app component
 │   └── vite.config.js        # Vite configuration
 └── package.json
+
 ```
 
 ## Setup Instructions
@@ -89,6 +90,44 @@ Job_scheduler/
    This will start:
    - Backend server on `http://localhost:3001`
    - Frontend dev server on `http://localhost:3000`
+
+## Docker Setup
+
+### Prerequisites
+- Docker
+- Docker Compose
+
+### Running with Docker Compose
+
+1. Build and start all services:
+   ```bash
+   docker compose up -d
+   ```
+
+2. View logs:
+   ```bash
+   docker compose logs -f
+   ```
+
+3. Stop all services:
+   ```bash
+   docker compose down
+   ```
+
+4. Stop and remove volumes (clears database data):
+   ```bash
+   docker compose down -v
+   ```
+
+The application will be available at http://localhost:3001
+
+The docker-compose.yaml file includes:
+- Server container with Node.js application
+- PostgreSQL database container
+- Automatic database initialization
+- Health checks to ensure services start in correct order
+
+Database credentials are set in docker-compose.yaml. For production, use environment variables or secrets management.
 
 ## API Endpoints
 

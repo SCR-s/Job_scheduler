@@ -33,6 +33,18 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+// Serve static files from the React app (only in production)
+if (process.env.NODE_ENV === 'production') {
+  const path = require('path');
+  // Serve static files from the client/dist directory
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+  
+  // Catch-all handler: send back React's index.html file for client-side routing
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  });
+}
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   logger.error('Error:', err);
