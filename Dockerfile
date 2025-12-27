@@ -1,6 +1,9 @@
 FROM node:20-alpine
 WORKDIR /app
 
+# Install timezone data for India timezone support
+RUN apk add --no-cache tzdata
+
 # Copy root package files
 COPY package.json package-lock.json ./
 

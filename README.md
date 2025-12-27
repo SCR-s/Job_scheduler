@@ -99,7 +99,17 @@ Job_scheduler/
 
 ### Running with Docker Compose
 
-1. Build and start all services:
+1. Create a .env file in the project root with database credentials:
+   ```bash
+   DB_USER=postgres
+   DB_PASSWORD=your_secure_password_here
+   DB_NAME=job_scheduler
+   DB_PORT=5432
+   ```
+   
+   Note: The containers are configured to use India timezone (Asia/Kolkata) for scheduled jobs. This ensures jobs execute at the correct time according to Indian Standard Time (IST).
+
+2. Build and start all services:
    ```bash
    docker compose up -d
    ```
